@@ -5,10 +5,19 @@ module.exports = {
     filename: './public/bundle.js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: [
+      '', '.js', '.jsx'
+    ],
     root: __dirname,
     alias: {
-      
+      Main: 'app/components/Main.jsx',
+      Nav: 'app/components/Nav.jsx',
+      Weather: 'app/components/Weather.jsx',
+      About: 'app/components/About.jsx',
+      Examples: 'app/components/Examples.jsx',
+      WeatherForm: 'app/components/WeatherForm.jsx',
+      WeatherDisplay: 'app/components/WeatherDisplay.jsx',
+      'open-weather-map': 'app/api/open-weather-map.jsx'
     }
   },
   module: {
@@ -22,5 +31,6 @@ module.exports = {
         exclude: /(node_modules|bower_components)/
       }
     ]
-  }
+  },
+  devtool: 'cheap-module-eval-source-map'
 }
