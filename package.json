@@ -1,11 +1,13 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-weather-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js | webpack -w"
+    "start": "node server.js",
+    "build": "webpack -p",
+    "dev": "node server.js | webpack -w"
   },
   "author": "",
   "license": "ISC",
