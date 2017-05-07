@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "webpack -p",
-    "dev": "node server.js | webpack -w"
+    "dev": "node server.js | webpack -w",
+    "deploy": "git push heroku master"
   },
   "author": "",
   "license": "ISC",
