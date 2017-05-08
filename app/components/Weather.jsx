@@ -7,12 +7,29 @@ var openWeatherMap = require('open-weather-map');
 
 var Weather = React.createClass({
 
+  componentDidMount: function () {
+    console.log(this.props.location);
+    var location = this.props.location.query.location;
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    var location = newProps.location.query.location;
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  },
+
   getInitialState: function () {
     return {isLoading: false, hasError: false}
   },
 
   handleSearch: function (location) {
-    this.setState({isLoading: true, errorMessage: undefined});
+    this.setState({isLoading: true, errorMessage: undefined, location: undefined, temp: undefined});
     var self = this;
     openWeatherMap
       .getTemp(location)
@@ -30,7 +47,7 @@ var Weather = React.createClass({
       if (isLoading) {
         return <h3 className="text-center">Fetching Weather...</h3>;
       } else if (temp && location) {
-      return <WeatherDisplay temp={temp} location={location}></WeatherDisplay>;
+        return <WeatherDisplay temp={temp} location={location}></WeatherDisplay>;
       }
     }
 
