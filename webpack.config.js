@@ -2,20 +2,12 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'script!jquery/dist/jquery.min.js',
-    'script!foundation-sites/dist/foundation.min.js',
-    './app/app.jsx'
+    'script!jquery/dist/jquery.min.js', 'script!foundation-sites/dist/foundation.min.js', './app/app.jsx'
   ],
   externals: {
     jquery: 'jQuery'
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      React: 'react'
-    })
-  ],
+  plugins: [new webpack.ProvidePlugin({jQuery: 'jquery', $: 'jquery', React: 'react'})],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -35,7 +27,7 @@ module.exports = {
       WeatherDisplay: 'app/components/WeatherDisplay.jsx',
       'open-weather-map': 'app/api/open-weather-map.jsx',
       ErrorModal: 'app/components/ErrorModal.jsx',
-      applicationStyles: 'app/styles/app.css'
+      applicationStyles: 'app/styles/app.scss'
     }
   },
   module: {
@@ -46,6 +38,12 @@ module.exports = {
           presets: ['react', 'es2015', 'stage-0']
         },
         test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/
+      }, {
+        loaders: [
+          'style', 'css', 'sass'
+        ],
+        test: /\.scss$/,
         exclude: /(node_modules|bower_components)/
       }
     ]

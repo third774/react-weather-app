@@ -12,7 +12,7 @@ var Examples = require('Examples');
 require('style!css!foundation-sites/dist/foundation.min.css');
 
 // App CSS
-require('style!css!applicationStyles')
+require('applicationStyles')
 
 $(document).foundation();
 
